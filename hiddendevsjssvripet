@@ -1,0 +1,54 @@
+// Preetham | Hidden Devs Application | progamerelite_3697794
+
+class DeveloperIntro {
+  constructor(name, age, discord, skills) {
+    this.name = name;
+    this.age = age;
+    this.discord = discord;
+    this.skills = skills;
+  }
+
+  delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async printIntro() {
+    console.clear();
+    await this.type(`Hey Hidden Devs Application Reader,`);
+    await this.type(`I'm ${this.name}, a ${this.age}-year-old JavaScript scripter.`);
+    await this.type(`I create clean, interactive, and modular scripts that just work.`);
+    await this.type(`\nMy skills include:`);
+    for (const skill of this.skills) {
+      await this.type(`- ${skill}`);
+    }
+    await this.type(`\nI thrive in collaborative teams, take feedback seriously, and genuinely enjoy building useful systems.`);
+    await this.type(`\nLet's build something awesome.`);
+    await this.type(`\nContact me on Discord: ${this.discord}`);
+  }
+
+  async type(text, speed = 25) {
+    for (let char of text) {
+      process.stdout ? process.stdout.write(char) : document.body.innerText += char;
+      await this.delay(speed);
+    }
+    if (!process.stdout) document.body.innerHTML += `<br>`;
+    else console.log('');
+    await this.delay(300);
+  }
+}
+
+// Instantiate and run
+const preetham = new DeveloperIntro(
+  "Preetham",
+  21,
+  "progamerelite_3697794",
+  [
+    "JavaScript (Vanilla, DOM, async)",
+    "Frontend Interactivity",
+    "UI/UX logic",
+    "Problem Solving",
+    "Team Collaboration"
+  ]
+);
+
+preetham.printIntro();
